@@ -1,53 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flip Date Widget</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #222;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        .flip-clock {
-            display: flex;
-            gap: 10px;
-        }
-        .flip {
-            background: black;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 2em;
-            text-align: center;
-            min-width: 80px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-    </style>
-    <script>
-        function updateFlipClock() {
-            const now = new Date();
-            const day = now.getDate().toString().padStart(2, '0');
-            const month = (now.getMonth() + 1).toString().padStart(2, '0');
-            const year = now.getFullYear();
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flip Date Widget</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #222;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
 
-            document.getElementById("day").innerText = day;
-            document.getElementById("month").innerText = month;
-            document.getElementById("year").innerText = year;
-        }
-        setInterval(updateFlipClock, 1000);
-        window.onload = updateFlipClock;
-    </script>
+    .flip-clock {
+      display: flex;
+      gap: 10px;
+    }
+
+    .flip {
+      background: linear-gradient(45deg, #DFAB01, #f5c542);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+      -webkit-background-clip: text;
+      background-clip: text;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 2em;
+      text-align: center;
+      min-width: 80px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .label {
+      font-size: 0.8em;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .flip-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+  <script>
+    function updateFlipClock() {
+      const now = new Date();
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const year = now.getFullYear();
+
+      document.getElementById("day").innerText = day;
+      document.getElementById("month").innerText = month;
+      document.getElementById("year").innerText = year;
+    }
+
+    window.onload = updateFlipClock;
+  </script>
 </head>
 <body>
-    <div class="flip-clock">
-        <div class="flip" id="day"></div>
-        <div class="flip" id="month"></div>
-        <div class="flip" id="year"></div>
+  <div class="flip-clock">
+    <div class="flip-container">
+      <div class="flip" id="day" aria-label="Day"></div>
+      <div class="label">Day</div>
     </div>
+    <div class="flip-container">
+      <div class="flip" id="month" aria-label="Month"></div>
+      <div class="label">Month</div>
+    </div>
+    <div class="flip-container">
+      <div class="flip" id="year" aria-label="Year"></div>
+      <div class="label">Year</div>
+    </div>
+  </div>
 </body>
 </html>
