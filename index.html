@@ -22,18 +22,19 @@
   }
 
   .flip {
-  color: transparent;
+  color: transparent; /* no text fill */
   font-weight: bold;
   font-size: 2em;
   text-align: center;
   min-width: 80px;
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.2); /* light border only */
-  -webkit-text-stroke: 1.5px #DFAB01; /* flip-style outlined digits */
-  background: transparent;
-  box-shadow: inset 0 -4px 0 rgba(255, 255, 255, 0.05); /* subtle flip-line */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* only the border is visible */
+  -webkit-text-stroke: 1.5px #DFAB01; /* outlined text only */
+  background: transparent; /* ensures no fill */
+  box-shadow: none; /* remove all shadows */
 }
+
 
   .label {
     font-size: 0.8em;
